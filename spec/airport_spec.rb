@@ -26,7 +26,20 @@ describe Airport do
     end
   
     it 'outputs a landing message' do
-      expect { airport.land_plane(plane) }.to output('The plane has landed').to_stdout 
+      expect { airport.land_plane(plane) }.to output('The plane has landed!').to_stdout 
+    end
+  end
+
+  describe '#take_off' do
+    it 'lets a plane take off' do
+      airport.apron = [plane]
+      airport.take_off(plane)
+      expect(airport.apron).to eq([])
+    end
+
+    it 'outputs a take-off message' do
+      airport.apron = [plane]
+      expect { airport.take_off(plane) }.to output('The plane has taken off!').to_stdout
     end
   end
 end
