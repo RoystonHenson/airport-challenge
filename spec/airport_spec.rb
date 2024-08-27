@@ -20,13 +20,22 @@ describe Airport do
   end
   
   describe '#land_plane' do
-    it 'lands a plane' do
-      airport.land_plane(plane)
-      expect(airport.apron).to eq([plane])
-    end
+    context 'when weather is good' do
+      it 'lands a plane' do
+        airport.land_plane(plane)
+        expect(airport.apron).to eq([plane])
+      end
   
-    it 'outputs a landing message' do
-      expect { airport.land_plane(plane) }.to output('The plane has landed!').to_stdout 
+      it 'outputs a landing message' do
+        expect { airport.land_plane(plane) }.to output('The plane has landed!').to_stdout 
+      end
+    end
+
+    context 'when weather is stormy' do
+      it 'raises error preventing landing' do
+        airport.stormy = 10
+        expect { airport.land_plane(plane) }.to raise_error('It is too stormy to land!')
+      end
     end
   end
 
@@ -48,7 +57,7 @@ describe Airport do
 
     context 'when weather is stormy' do
       it 'raises error preventing take-off' do
-        airport.stormy = 7
+        airport.stormy = 10
         expect { airport.take_off(plane) }.to raise_error(RuntimeError, 'It is too stormy to take off!')
       end
     end
