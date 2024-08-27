@@ -31,15 +31,26 @@ describe Airport do
   end
 
   describe '#take_off' do
-    it 'lets a plane take off' do
+    before(:each) do
       airport.apron = [plane]
-      airport.take_off(plane)
-      expect(airport.apron).to eq([])
     end
 
-    it 'outputs a take-off message' do
-      airport.apron = [plane]
-      expect { airport.take_off(plane) }.to output('The plane has taken off!').to_stdout
+    context 'when weather is good' do
+      it 'lets a plane take off' do
+        airport.take_off(plane)
+        expect(airport.apron).to eq([])
+      end
+
+      it 'outputs a take-off message' do
+        expect { airport.take_off(plane) }.to output('The plane has taken off!').to_stdout
+      end
+    end
+
+    context 'when weather is stormy' do
+      it 'raises error preventing take-off' do
+        airport.stormy = 7
+        expect { airport.take_off(plane) }.to raise_error(RuntimeError, 'It is too stormy to take off!')
+      end
     end
   end
 end
