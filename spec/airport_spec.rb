@@ -17,6 +17,19 @@ describe Airport do
     it 'has an apron to park planes' do
       expect(airport.apron).to eq([])
     end
+  
+    context 'when not given an argument' do
+      it 'has a default capacity of 5' do
+        expect(airport.capacity).to eq(5)
+      end
+    end
+
+    context 'when given an argument' do
+      it 'has a default capacity set by user' do
+        airport = Airport.new(10)
+        expect(airport.capacity).to eq(10)
+      end
+    end
   end
   
   describe '#land_plane' do
@@ -63,5 +76,5 @@ describe Airport do
     end
   end
 
-  
+
 end

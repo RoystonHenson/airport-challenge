@@ -1,13 +1,16 @@
 require './lib/plane'
 
 class Airport
+  attr_reader :capacity
   attr_accessor :apron, :stormy
 
   STORMY_THRESHOLD = 6
+  CAPACITY = 5
 
-  def initialize
+  def initialize(capacity=CAPACITY)
     @apron = []
     @stormy = 0
+    @capacity = capacity
   end
 
   def land_plane(plane)
