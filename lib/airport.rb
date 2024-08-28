@@ -14,6 +14,7 @@ class Airport
   end
 
   def land_plane(plane)
+    raise 'The airport is full!' if @apron.size >= CAPACITY
     if stormy?
       stormy_error('It is too stormy to land!')
     else

@@ -33,7 +33,7 @@ describe Airport do
   end
   
   describe '#land_plane' do
-    context 'when weather is good' do
+    context 'when weather is good and there is space in the airport' do
       it 'lands a plane' do
         airport.land_plane(plane)
         expect(airport.apron).to eq([plane])
@@ -41,6 +41,14 @@ describe Airport do
   
       it 'outputs a landing message' do
         expect { airport.land_plane(plane) }.to output('The plane has landed!').to_stdout 
+      end
+    end
+
+    context 'when weather is good but the airport if full' do
+      it 'raises error for airport full' do
+        5.times { airport.apron << double('plane') }
+        expect { airport.land_plane(plane) }.to raise_error(RuntimeError, 'The airport is full!')
+        expect(airport.apron.size).to eq(5)
       end
     end
 
