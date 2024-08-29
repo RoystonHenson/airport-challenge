@@ -14,23 +14,15 @@ class Airport
   end
 
   def land_plane(plane)
-    raise 'The airport is full!' if @apron.size >= CAPACITY
-    raise 'This plane has already landed!' if apron.include?(plane)
-    if stormy?
-      stormy_error('It is too stormy to land!')
-    else
-      initiate_landing(plane)
-    end
+    check_if_full
+    check_if_landed(plane)
+    stormy? ? stormy_error('It is too stormy to land!') : initiate_landing(plane) 
   end
 
   def take_off(plane)
-    raise 'That plane is not in this airport!' if !apron.include?(plane)
-    if stormy?
-      stormy_error('It is too stormy to take off!')
-    else
-      initiate_take_off(plane)
-    end
-  end
+    check_if_in_airport(plane)
+    stormy? ? stormy_error('It is too stormy to take off!') : initiate_take_off(plane)
+  end    
 
   private
 
@@ -57,5 +49,17 @@ class Airport
     apron.delete_at(apron.index(plane))
     print 'The plane has taken off!'
     passage_of_time
+  end
+
+  def check_if_full
+    raise 'The airport is full!' if @apron.size >= CAPACITY
+  end
+
+  def check_if_landed(plane)
+    raise 'This plane has already landed!' if apron.include?(plane)
+  end
+
+  def check_if_in_airport(plane)
+    raise 'That plane is not in this airport!' if !apron.include?(plane)
   end
 end
