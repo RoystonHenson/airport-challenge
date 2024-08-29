@@ -25,3 +25,7 @@
   As an air traffic controller,
   To avoid confusion,
   I would like planes to be unable to land if they have already landed.
+
+  As an air traffic controller,
+  To avoid confusion, 
+  I would like planes to be unable to take-off if they are already flying. 

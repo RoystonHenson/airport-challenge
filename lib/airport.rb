@@ -24,6 +24,7 @@ class Airport
   end
 
   def take_off(plane)
+    raise 'That plane is not in this airport!' if !apron.include?(plane)
     if stormy?
       stormy_error('It is too stormy to take off!')
     else

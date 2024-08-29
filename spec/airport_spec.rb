@@ -34,7 +34,7 @@ describe Airport do
   
   describe '#land_plane' do
     context 'when weather is good and there is space in the airport' do
-      it 'raises error if plane already landed' do
+      it 'raises error for plane already landed' do
         airport.land_plane(plane)
         airport.stormy = 0
         expect { airport.land_plane(plane) }.to raise_error(RuntimeError, 'This plane has already landed!')
@@ -50,7 +50,7 @@ describe Airport do
       end
     end
 
-    context 'when weather is good but the airport if full' do
+    context 'when weather is good but the airport is full' do
       it 'raises error for airport full' do
         5.times { airport.apron << double('plane') }
         expect { airport.land_plane(plane) }.to raise_error(RuntimeError, 'The airport is full!')
@@ -71,7 +71,7 @@ describe Airport do
       airport.apron = [plane]
     end
 
-    context 'when weather is good' do
+    context 'when weather is good and plane is in the airport' do
       it 'lets a plane take off' do
         airport.take_off(plane)
         expect(airport.apron).to eq([])
@@ -79,6 +79,13 @@ describe Airport do
 
       it 'outputs a take-off message' do
         expect { airport.take_off(plane) }.to output('The plane has taken off!').to_stdout
+      end
+    end
+
+    context 'when weather is good but plane is not in the airport' do
+      it 'raises error for plane not in airport' do
+        airport.take_off(plane)
+        expect { airport.take_off(plane) }.to raise_error(RuntimeError, 'That plane is not in this airport!')
       end
     end
 
