@@ -21,3 +21,7 @@
   As an air traffic controller,
   To ensure safety,
   I want to prevent landing when the airport is full.
+
+  As an air traffic controller,
+  To avoid confusion,
+  I would like planes to be unable to land if they have already landed.

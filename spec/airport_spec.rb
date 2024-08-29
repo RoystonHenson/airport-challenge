@@ -34,6 +34,12 @@ describe Airport do
   
   describe '#land_plane' do
     context 'when weather is good and there is space in the airport' do
+      it 'raises error if plane already landed' do
+        airport.land_plane(plane)
+        airport.stormy = 0
+        expect { airport.land_plane(plane) }.to raise_error(RuntimeError, 'This plane has already landed!')
+      end
+
       it 'lands a plane' do
         airport.land_plane(plane)
         expect(airport.apron).to eq([plane])
