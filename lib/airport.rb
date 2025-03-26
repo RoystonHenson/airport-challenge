@@ -52,7 +52,7 @@ class Airport
   end
 
   def check_if_full
-    raise 'The airport is full!' if @apron.size >= CAPACITY
+    raise 'The airport is full!' if @apron.size >= capacity
   end
 
   def check_if_landed(plane)

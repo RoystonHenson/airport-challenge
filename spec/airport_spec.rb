@@ -2,7 +2,8 @@ require 'airport'
 
 describe Airport do
   let(:airport) { Airport.new }
-  let(:plane) { double('plane') }
+  let(:plane)   { double('plane') }
+  let(:plane2)  { double('plane2')}
 
   before(:all) do
     @original_stdout = $stdout
@@ -26,9 +27,10 @@ describe Airport do
     end
 
     context 'when given an argument' do
-      it 'has a default capacity set by user' do
-        airport = Airport.new(10)
-        expect(airport.capacity).to eq(10)
+      it 'can land planes equal to the capacity set by user' do
+        airport = Airport.new(1)
+        airport.land_plane(plane)
+        expect { airport.land_plane(plane2)}.to raise_error(RuntimeError, 'The airport is full!') 
       end
     end
   end
@@ -97,6 +99,4 @@ describe Airport do
       end
     end
   end
-
-
 end
