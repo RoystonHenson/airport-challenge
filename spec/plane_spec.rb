@@ -6,7 +6,7 @@ describe Plane do
 
   describe '#land' do
     it 'lands' do
-      expect { plane.land }.to output("The plane has landed!").to_stdout
+      expect(plane.land).to eq('landed')
     end
   end
 

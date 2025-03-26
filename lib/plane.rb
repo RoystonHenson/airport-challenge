@@ -1,6 +1,6 @@
 class Plane
   def land
-    print 'The plane has landed!'
+    'landed'
   end
 
   def take_off
