@@ -1,10 +1,9 @@
 class Plane
-
-  def land(airport)
-    "The plane has landed at #{airport} airport!"
+  def land
+    print 'The plane has landed!'
   end
 
-  def take_off(airport)
-    "The plane has left #{airport} airport!"
+  def take_off
+    print 'The plane has taken off!'
   end
 end
