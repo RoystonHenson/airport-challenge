@@ -1,26 +1,12 @@
 require 'plane'
-=begin
+
 describe Plane do
   let(:plane) { Plane.new }
+  let(:airport) { double('airport') }
 
-  describe '#initialize' do
-    it 'is not flying' do
-      expect(plane.airbourne).to eq(false)
-    end
-  end
-
-  describe '#flying' do
-    it 'is flying' do
-      plane.flying
-      expect(plane.airbourne).to be(true)
-    end
-  end
-
-  describe '#not_flying' do
-    it 'is not flying' do
-      plane.not_flying
-      expect(plane.airbourne).to eq(false)
+  describe '#land' do
+    it 'lands' do
+      expect(plane.land(airport)).to eq("The plane has landed at #{airport} airport!")
     end
   end
 end
-=end

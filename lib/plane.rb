@@ -1,17 +1,6 @@
 class Plane
-=begin
-  attr_accessor :airbourne
 
-  def initialize
-    @airbourne = false
+  def land(airport)
+    "The plane has landed at #{airport} airport!"
   end
-
-  def flying
-    @airbourne = true
-  end
-
-  def not_flying
-    @airbourne  = false
-  end
-=end
 end
