@@ -22,5 +22,5 @@ describe Plane do
       expect(plane.airbourne).to eq(false)
     end
   end
-=end
 end
+=end
