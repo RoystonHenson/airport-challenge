@@ -1,1 +1,1 @@
-Airport Challenge
+## Airport Challenge [![Coverage Status](https://coveralls.io/repos/github/RoystonHenson/airport-challenge/badge.svg?branch=main)](https://coveralls.io/github/RoystonHenson/airport-challenge?branch=main)
