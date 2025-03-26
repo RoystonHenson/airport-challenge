@@ -14,14 +14,14 @@ class Airport
   end
 
   def land_plane(plane)
-    check_if_full
     check_if_landed(plane)
-    stormy? ? stormy_error('It is too stormy to land!') : initiate_landing(plane) 
+    check_if_full
+    stormy? ? stormy_error('It is too stormy to land! Try again later.') : initiate_landing(plane) 
   end
 
   def take_off(plane)
     check_if_in_airport(plane)
-    stormy? ? stormy_error('It is too stormy to take off!') : initiate_take_off(plane)
+    stormy? ? stormy_error('It is too stormy to take off! Try again later.') : initiate_take_off(plane)
   end    
 
   private
@@ -39,7 +39,7 @@ class Airport
     raise error_message
   end
 
-  def initiate_landing(plane)
+  def initiate_landing(plane) #change to aircraft to acoomodate other flying vehicles?
     apron << plane
     print 'The plane has landed!'
     passage_of_time
@@ -56,7 +56,7 @@ class Airport
   end
 
   def check_if_landed(plane)
-    raise 'This plane has already landed!' if apron.include?(plane)
+    raise 'That plane has already landed!' if apron.include?(plane)
   end
 
   def check_if_in_airport(plane)

@@ -62,7 +62,7 @@ describe Airport do
     context 'when weather is stormy' do
       it 'raises error preventing landing' do
         airport.stormy = 10
-        expect { airport.land_plane(plane) }.to raise_error('It is too stormy to land!')
+        expect { airport.land_plane(plane) }.to raise_error('It is too stormy to land! Try again later.')
       end
     end
   end
@@ -93,7 +93,7 @@ describe Airport do
     context 'when weather is stormy' do
       it 'raises error preventing take-off' do
         airport.stormy = 10
-        expect { airport.take_off(plane) }.to raise_error(RuntimeError, 'It is too stormy to take off!')
+        expect { airport.take_off(plane) }.to raise_error(RuntimeError, 'It is too stormy to take off! Try again later.')
       end
     end
   end
