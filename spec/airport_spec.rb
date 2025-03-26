@@ -10,6 +10,7 @@ describe Airport do
   end
 
   after(:all) do
+    $stdout.close
     $stdout = @original_stdout
   end
     
@@ -37,7 +38,7 @@ describe Airport do
       it 'raises error for plane already landed' do
         airport.land_plane(plane)
         airport.stormy = 0
-        expect { airport.land_plane(plane) }.to raise_error(RuntimeError, 'This plane has already landed!')
+        expect { airport.land_plane(plane) }.to raise_error(RuntimeError, 'That plane has already landed!')
       end
 
       it 'lands a plane' do
