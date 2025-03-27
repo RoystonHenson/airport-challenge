@@ -27,6 +27,7 @@ describe Plane do
 
   describe '#land' do
     it 'it knows it\'s landed' do
+      plane.take_off
       plane.land
       expect(plane.airborne).to eq(false)
     end

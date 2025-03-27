@@ -6,7 +6,7 @@ class Plane
   end
 
   def land
-    'landed'
+    @airborne = false
   end
 
   def take_off
