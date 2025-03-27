@@ -20,9 +20,19 @@ describe Airport do
   end
 
   describe '#permit_landing' do
-    it 'allows flight to land' do
-      airport.permit_landing(plane)
-      expect(airport.apron).to eq([plane])
+    context 'when airport is not full' do
+      it 'allows flight to land' do
+        airport.permit_landing(plane)
+        expect(airport.apron).to eq([plane])
+      end
+    end
+
+    context 'when airport is full' do
+      it 'will throw an error' do
+        5.times { airport.apron << double('plane double') }
+        p airport.apron
+        expect { airport.permit_landing(plane) }.to raise_error(RuntimeError, 'The airport is full!')
+      end
     end
   end
 

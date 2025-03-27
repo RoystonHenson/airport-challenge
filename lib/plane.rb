@@ -6,11 +6,11 @@ class Plane
   end
 
   def land
-    flying? ? @airborne = false : raise(already_landed_error)
+    flying? ? @airborne = false : already_landed_error
   end
 
   def take_off
-    !flying? ? @airborne = true : raise(already_flying_error)
+    !flying? ? @airborne = true : already_flying_error
     print 'The plane has taken off!'
   end
 
@@ -21,10 +21,10 @@ class Plane
   end
 
   def already_landed_error
-    'This plane has already landed!'
+    raise 'This plane has already landed!'
   end
 
   def already_flying_error
-    'The plane has already taken off!'
+    raise 'The plane has already taken off!'
   end
 end
