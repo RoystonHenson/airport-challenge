@@ -3,9 +3,11 @@ require './lib/plane'
 class Airport
   attr_reader :apron, :capacity
 
-  def initialize
+  CAPACITY = 5
+
+  def initialize(capacity=CAPACITY)
     @apron = []
-    @capacity = 5
+    @capacity = capacity
   end
 
   def permit_landing(plane)

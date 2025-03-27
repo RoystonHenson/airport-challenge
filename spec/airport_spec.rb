@@ -10,12 +10,21 @@ describe Airport do
   end
 
   describe '#initialize' do
-    it 'has an apron' do
-      expect(airport.apron).to eq([])
+    context 'with default capacity' do
+      it 'has an apron' do
+        expect(airport.apron).to eq([])
+      end
+
+      it 'has a capacity of 5' do
+        expect(airport.capacity).to eq(5)
+      end
     end
 
-    it 'has a capacity of 5' do
-      expect(airport.capacity).to eq(5)
+    context 'with user-specified capacity of 10' do
+      it 'has space for 10 planes' do
+        airport2 = Airport.new(10)
+        expect(airport2.capacity).to eq(10)
+      end
     end
   end
 
