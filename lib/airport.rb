@@ -12,4 +12,9 @@ class Airport
     plane.land
     apron << plane
   end
+
+  def permit_take_off(plane)
+    plane.take_off
+    apron.delete(plane)
+  end
 end
