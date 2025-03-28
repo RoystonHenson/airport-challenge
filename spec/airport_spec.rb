@@ -41,7 +41,7 @@ describe Airport do
     context 'when airport is not full but weather is stormy' do
       it 'will throw an error' do
         allow(airport).to receive(:rand).and_return(7)
-        expect { airport.permit_landing(plane) }.to raise_error(RuntimeError, 'The weather is stormy! Try again later.')
+        expect { airport.permit_landing(plane) }.to raise_error(RuntimeError, 'The weather is too stormy! Try again later.')
       end
 
       it 'will prevent a plane from landing' do
@@ -66,11 +66,33 @@ describe Airport do
   end
 
   describe '#permit_take_off' do
-    it 'allows flight to take off' do
-      allow(airport).to receive(:rand).and_return(6)
-      airport.permit_landing(plane)
-      airport.permit_take_off(plane)
-      expect(airport.apron).to eq([])
+    #before(:each) do
+     # airport.permit_landing(plane)
+    #end
+
+    context 'when weather is not stormy' do
+      it 'allows flight to take off' do
+        allow(airport).to receive(:rand).and_return(6)
+        airport.permit_landing(plane)
+        airport.permit_take_off(plane)
+        expect(airport.apron).to eq([])
+      end
+    end
+
+    context 'when weather is stormy' do
+      before(:each) do
+        allow(airport).to receive(:rand).and_return(6)
+        airport.permit_landing(plane)
+        allow(airport).to receive(:rand).and_return(7)
+      end
+
+      it 'will throw an error' do
+        expect { airport.permit_take_off(plane) }.to raise_error(RuntimeError, 'The weather is too stormy! Try again later.')
+      end
+
+      it 'will prevent a plane from taking off' do
+        expect { airport.permit_take_off(plane) rescue nil }.not_to change { airport.apron }
+      end
     end
   end
 end

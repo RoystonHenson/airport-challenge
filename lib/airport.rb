@@ -20,6 +20,7 @@ class Airport
   end
 
   def permit_take_off(plane)
+    check_weather
     plane.take_off
     apron.delete(plane)
   end
@@ -35,6 +36,6 @@ class Airport
   end
 
   def check_weather
-     raise('The weather is stormy! Try again later.') if stormy?
+     raise('The weather is too stormy! Try again later.') if stormy?
   end
 end
