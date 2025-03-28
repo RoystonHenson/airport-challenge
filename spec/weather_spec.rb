@@ -3,17 +3,17 @@ require 'weather'
 describe Weather do
   let(:dummy_class) { Class.new { include Weather } }
 
-  describe '#check_weather' do
-    it 'returns an integer' do 
-      expect(dummy_class.new.check_weather).to be_a(Integer)
+  describe '#stormy?' do
+    it 'is not stormy below 7' do
+      dummy = dummy_class.new
+      allow(dummy).to receive(:rand).and_return(6)
+      expect(dummy.stormy?).to eq(false)
     end
 
-    it '0 or higher' do
-      expect(dummy_class.new.check_weather).to be >= 0
-    end
-
-    it '10 or lower' do
-      expect(dummy_class.new.check_weather).to be <= 10
+    it 'is stormy at 7 or higher' do
+      dummy = dummy_class.new
+      allow(dummy).to receive(:rand).and_return(7)
+      expect(dummy.stormy?).to eq(true)
     end
   end
 end

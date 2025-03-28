@@ -1,6 +1,6 @@
 module Weather
 
-  def check_weather
-    rand(11)
+  def stormy?
+    rand(11) >= 7 ? true : false
   end
 end
