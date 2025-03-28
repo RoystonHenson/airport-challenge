@@ -2,15 +2,25 @@ As an air traffic controller,
 I want to instruct a plane to land at an airport,
 so I can get passengers to a destination.
 
----
+As an air traffic controller,
+I want landed planes to be unable to land again at any airports,
+to avoid confusion within the system.
 
 As an air traffic controller, 
-I want to instruct a plane to take off from an airport and confirm that it is no longer in the airport,
-so I can get passengers on the way to their destination. 
+I want to instruct a plane to take off from an airport,
+so I can get passengers on the way to their destination.
 
-As a air traffic controller,
-I want planes that take off to confirm they are no longer in the airport,
+As an air traffic controller,
+I want planes to confirm they are no longer in the airport after they have taken off,
 so I know the runways is clear for another plane to use.
+
+As an air traffic controller,
+I want planes to only be able to take off from airports they are in,
+to avoid confusion within the system.
+
+As an air traffic controller,
+I want planes already in the air to be unable to take off,
+to avoid confusion within the system.
 
 As an air traffic controller, 
 I want to prevent planes landing when the airport is full,
@@ -21,31 +31,9 @@ I would like a default airport capacity that can be overriden as appropriate,
 so that the software can be used for different-sized airports.
 
 As an air traffic controller, 
-I want to prevent planes taking off during stormy weather, 
-to ensure safety and comply with flight safety protocols. 
+I want to prevent planes landing during stormy weather, 
+to ensure safety and comply with flight safety protocols.
 
 As an air traffic controller, 
-I want to prevent planes landing during stormy weather, 
+I want to prevent planes taking off during stormy weather, 
 to ensure safety and comply with flight safety protocols.  
-
----
-
-As an air traffic controller,
-I want planes to only be able to take off from airports they are in,
-to avoid confusion within the system.
-
-As an air traffic controller,
-I want planes already in the air to be unable to take off,
-to avoid confusion within the system.
-
-As an air traffic controller,
-I want planes already in the air to not register as being in an airport,
-to avoid confusion within the system.
-
-As an air traffic controller,
-I want landed planes to be unable to land,
-to avoid confusion within the system.
-
-As an air traffic controller,
-I want landed planes to register as being in an airport,
-to avoid confusion within the system.

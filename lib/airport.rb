@@ -4,7 +4,7 @@ require './lib/weather'
 class Airport
   include Weather
 
-  attr_accessor :apron, :capacity
+  attr_reader :apron, :capacity
 
   CAPACITY = 5
 
@@ -15,17 +15,25 @@ class Airport
 
   def permit_landing(plane)
     check_weather
-    full? ? airport_full_error : @apron << plane
+    check_apron(plane)
     plane.land
   end
 
   def permit_take_off(plane)
     check_weather
-    plane.take_off
     apron.delete(plane)
+    plane.take_off
   end
 
   private
+
+  def check_weather
+     raise('The weather is too stormy! Try again later.') if stormy?
+  end
+
+  def check_apron(plane)
+    full? ? airport_full_error : @apron << plane
+  end
 
   def full?
     @apron.size >= @capacity
@@ -33,9 +41,5 @@ class Airport
 
   def airport_full_error
     raise('The airport is full!')
-  end
-
-  def check_weather
-     raise('The weather is too stormy! Try again later.') if stormy?
   end
 end
